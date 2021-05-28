@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="wrapper">
+	<div class="container">
+		<div class="event">
+			{% for element in events %}
+			<div class="event__card">
+				<img src="{{ element.photo.url }}" alt="" />
+				<h1 class="card__title">{{ element.title }}</h1>
+				<div class="card__eventdate">{{ element.event_date }}</div>
+				<div class="card__eventtime">{{ element.event_time }}</div>
+				<div class="card__change">
+					<a class="change__link" href="{% url 'event-details' element.pk %}"
+						>Details</a
+					>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<div class="create__event">
+			<span class="llink"></span>
+			<a href="create-new-event/">Create new Event</a>
+			<span class="rlink"></span>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

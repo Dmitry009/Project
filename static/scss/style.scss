@@ -1,0 +1,728 @@
+@import "_numstyle.scss";
+@import "_logregout.scss";
+@import "_categories.scss";
+@import "_dish.scss";
+@import "_messages.scss";
+@import "_events.scss";
+
+/*
+Main style's file
+*/
+@import url("https://fonts.googleapis.com/css2?family=Lemonada:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif&display=swap");
+
+$body_bg: black;
+$main_color: #ffd900;
+$center_width: 1600px;
+$main_font: "Lemonada", cursive;
+
+/*====================================================
+							SETTINGS
+====================================================*/
+
+body {
+	background-color: $body_bg;
+	padding: 0;
+	margin: 0;
+}
+
+body.lock {
+	overflow: hidden;
+}
+
+.container {
+	max-width: $center_width;
+	margin: 0 auto;
+	padding: 0px 10px;
+}
+
+// @media (max-width: 1200px) {
+// 	.container {
+// 		max-width: 900px;
+// 	}
+// }
+
+/*====================================================
+							HEADER
+====================================================*/
+
+.header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 50;
+
+	&::before {
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background-color: $body_bg;
+		z-index: 2;
+	}
+
+	&__body {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		height: 60px;
+		align-items: center;
+	}
+
+	&__burger {
+		display: none;
+	}
+
+	&__logo {
+		max-width: 147px;
+		font-size: 30px;
+		color: $main_color;
+		text-transform: uppercase;
+		text-decoration: none;
+		font-weight: bold;
+		font-family: $main_font;
+		z-index: 3;
+		margin-left: 30px;
+		position: relative;
+		& span {
+			font-size: 35px;
+		}
+	}
+
+	.menu__list {
+		position: relative;
+		z-index: 2;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		display: flex;
+		& li.active a,
+		& a:hover {
+			color: #968214;
+		}
+	}
+
+	.menu__link {
+		display: block;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: $main_color;
+		margin: 0px 0px 0px 40px;
+		font-family: $main_font;
+		transition: all 0.3s ease;
+	}
+
+	/*==========================================
+					Адаптив для header
+	==========================================*/
+
+	@media (max-width: 1000px) {
+		&__body {
+			height: 45px;
+		}
+		&__logo {
+			margin-left: 0px;
+		}
+		&__burger {
+			display: block;
+			position: relative;
+			width: 30px;
+			height: 20px;
+			z-index: 3;
+			& span {
+				position: absolute;
+				background-color: #fff;
+				width: 100%;
+				height: 2px;
+				top: 9px;
+				transition: all 0.3s ease 0s;
+			}
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				background-color: #fff;
+				width: 100%;
+				height: 2px;
+				left: 0;
+				transition: all 0.3s ease 0s;
+			}
+			&::before {
+				top: 0;
+			}
+			&::after {
+				bottom: 0;
+			}
+			&.active::before {
+				transform: rotate(45deg);
+				top: 9px;
+			}
+			&.active::after {
+				transform: rotate(-45deg);
+				bottom: 9px;
+			}
+			&.active span {
+				transform: scale(0);
+			}
+		}
+		.menu__body {
+			z-index: 1;
+			position: fixed;
+			top: -100%;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgb(49, 49, 49);
+			overflow: auto;
+			padding: 80px 0px 0px 0px;
+			display: block;
+			transition: all 0.5s ease 0s;
+			&.active {
+				top: 0;
+			}
+		}
+		.menu__list {
+			display: block;
+			& li {
+				font-size: 25px;
+				margin: 0px 0px 30px 0px;
+			}
+		}
+	}
+}
+
+/*================================================
+							BANNERS
+================================================*/
+
+.banners {
+	position: relative;
+	margin: 60px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	width: 100%;
+	height: 900px;
+
+	&__container {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		padding-top: 200px;
+	}
+
+	&__text {
+		margin: 120px 0px 0px 0px;
+		font-family: $main_font;
+		color: $main_color;
+		font-size: 55px;
+		font-weight: 900;
+	}
+
+	&__img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		img {
+			width: 100%;
+			height: 100%;
+			opacity: 30%;
+			object-fit: cover;
+			background-size: cover;
+		}
+	}
+
+	/*==========================================
+					Адаптив для банеров
+	==========================================*/
+
+	@media (max-width: 768px) {
+		& {
+			margin: 45px 0px 0px 0px;
+		}
+
+		&__container {
+			display: block;
+			padding: 20% 0px 20% 0px;
+			text-align: center;
+		}
+
+		&__text {
+			font-size: 40px;
+			margin: 0px 0px 0px 0px;
+		}
+	}
+
+	@media (max-width: 420px) {
+		&__text {
+			font-size: 30px;
+		}
+	}
+
+	@media (max-width: 360px) {
+		&__text {
+			font-size: 25px;
+		}
+	}
+}
+
+/*=============================================
+						RESERVATION
+=============================================*/
+
+.reservation {
+	display: flex;
+	max-width: 400px;
+	margin: 10px auto;
+	padding: 16px;
+	& h1 {
+		color: $main_color;
+		font-size: 40px;
+		text-align: center;
+		font-family: $main_font;
+		margin-bottom: 30px;
+	}
+	#name,
+	#email {
+		height: 50px;
+		width: 368px;
+		font-family: $main_font;
+	}
+
+	#message {
+		width: 368px;
+		height: 75px;
+		resize: none;
+		font-family: $main_font;
+	}
+
+	.reserv {
+		&__name,
+		&__email,
+		&__message {
+			padding-bottom: 45px;
+		}
+
+		&__btn {
+			width: 368px;
+			height: 60px;
+			background-color: black;
+			//border: 1px solid $main_color;
+			color: $main_color;
+			cursor: pointer;
+			font-size: larger;
+			font-family: $main_font;
+		}
+	}
+
+	/*==========================================
+					Адаптив для Резерва
+	==========================================*/
+
+	@media (max-width: 768px) {
+		& {
+			margin-top: 15%;
+			display: block;
+		}
+	}
+
+	@media (max-width: 420px) {
+		& {
+			margin-top: 25%;
+		}
+		& h1 {
+			font-size: 30px;
+		}
+		.reserv__btn,
+		#message,
+		#name,
+		#email {
+			width: 300px;
+		}
+	}
+
+	@media (max-width: 359px) {
+		& {
+			margin-top: 30%;
+		}
+		& h1 {
+			font-size: 20px;
+		}
+		.reserv__btn,
+		#message,
+		#name,
+		#email {
+			width: 270px;
+		}
+	}
+
+	@media (max-width: 280px) {
+		.reserv__btn,
+		#message,
+		#name,
+		#email {
+			width: 240px;
+		}
+	}
+}
+
+/*=============================================
+						CARDS MENU
+=============================================*/
+
+.text__container {
+	padding: 20px 0px 0px 0px;
+	color: white;
+	text-align: center;
+	font-family: $main_font;
+	font-size: 20px;
+}
+
+.categories {
+	max-width: 1300px;
+	&__cards {
+		max-width: 100%;
+		margin: 100px auto 100px auto;
+		height: auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 25px;
+		overflow: hidden;
+		& a {
+			text-decoration: none;
+		}
+		.card {
+			height: 300px;
+			width: 300px;
+			box-sizing: border-box;
+			border-color: $main_color;
+			& img {
+				width: 100%;
+				height: 250px;
+				margin: 0;
+				display: block;
+				border-radius: 10px;
+			}
+			&__title {
+				text-align: center;
+				margin: 0;
+				padding: 13px 50px;
+				color: $main_color;
+				background-color: #000;
+				font-family: $main_font;
+				font-size: 22px;
+				border: 1px solid;
+				border-color: $main_color;
+				border-radius: 10px;
+			}
+		}
+
+		/*==========================================
+						Адаптив для Карточек
+		==========================================*/
+
+		@media (max-width: 1300px) {
+			& {
+				max-width: 640px;
+				display: grid;
+				grid-template-columns: 300px 300px;
+				grid-template-rows: 300px 300px;
+				grid-row-gap: 40px;
+				grid-column-gap: 40px;
+				// grid-gap: 3vw;
+				justify-content: unset;
+			}
+		}
+
+		@media (max-width: 767px) {
+			& {
+				width: 350px;
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: 1fr;
+				.card {
+					height: 350px;
+					width: 350px;
+
+					& img {
+						height: 300px;
+					}
+				}
+			}
+		}
+
+		@media (max-width: 410px) {
+			& {
+				display: grid;
+				width: 300px;
+				grid-template-columns: 1fr;
+				grid-template-rows: 1fr;
+			}
+			.card {
+				height: 300px;
+				width: 300px;
+				& img {
+					height: 250px;
+				}
+			}
+		}
+
+		@media (max-width: 322px) {
+			& {
+				display: grid;
+				width: 260px;
+				grid-template-columns: 1fr;
+				grid-template-rows: 1fr;
+			}
+			.card {
+				height: 260px;
+				width: 260px;
+				& img {
+					height: 210px;
+				}
+			}
+		}
+	}
+}
+
+/*===========================================
+						ABOUT US
+===========================================*/
+
+.info {
+	.main__container {
+		position: relative;
+		z-index: 2;
+	}
+	position: relative;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	width: 100%;
+	height: 900px;
+	&__block {
+		display: flex;
+		justify-content: space-between;
+		margin: auto;
+	}
+	&__title,
+	&__text {
+		color: $main_color;
+		font-family: "PT Serif", serif;
+		margin: auto;
+		/* margin: 0px 0px 0px 0px; */
+	}
+	&__title {
+		font-size: 100px;
+		text-align: center;
+	}
+	&__text {
+		height: 550px;
+		width: 900px;
+		margin: 200px 0px 0px 0px;
+		background-color: rgba(53, 53, 53, 0.75);
+		border-radius: 10px;
+		font-size: 19px;
+		text-indent: 25px;
+		overflow: auto;
+
+		& > p {
+			margin: 20px 0px 0px 0px;
+			&:last-child {
+				margin-bottom: 20px;
+			}
+		}
+	}
+	.text {
+		padding: 10px 10px 10px 10px;
+	}
+	&__img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		img {
+			width: 100%;
+			height: 100%;
+			opacity: 30%;
+			object-fit: cover;
+		}
+	}
+
+	@media (max-width: 1008px) {
+		&__block {
+			display: block;
+		}
+		&__title {
+			padding: 20px 0px 20px 0px;
+			font-size: 50px;
+			text-align: center;
+		}
+		&__text {
+			margin: 0 auto;
+			height: 600px;
+			width: 600px;
+			font-size: 19px;
+		}
+	}
+
+	@media (max-width: 767px) {
+		&__text {
+			height: 800px;
+			width: 350px;
+			font-size: 17px;
+		}
+	}
+	@media (max-width: 410px) {
+		&__text {
+			height: 800px;
+			width: 300px;
+			font-size: 16px;
+		}
+	}
+
+	@media (max-width: 322px) {
+		&__text {
+			height: 800px;
+			width: 260px;
+			font-size: 15px;
+		}
+	}
+}
+
+/*===============================================
+							EVENTS
+===============================================*/
+
+.title {
+	font-size: 30px;
+	font-family: $main_font;
+	font-weight: 900;
+	color: $main_color;
+	margin: 50px 0px 30px 0px;
+	text-align: center;
+}
+
+.image-slider {
+	// height: 700px;
+	// height: 100%;
+	// width: 900px;
+	padding: 30px 0px 70px 0px;
+
+	.dish__information {
+		width: 700px;
+		height: 100px;
+		margin: 0 auto;
+		border-radius: 0px 0px 20px 20px;
+		background-color: black;
+		border: 1px solid $main_color;
+		padding: 20px 100px 20px 100px;
+		color: $main_color;
+		font-family: $main_font;
+		font-style: 14px;
+		overflow: auto;
+
+		.item__title {
+			font-family: $main_font;
+			font-size: 20px;
+			color: $main_color;
+			font-weight: 700;
+			text-align: center;
+		}
+
+		.item__description {
+			font-family: $main_font;
+			font-size: 15px;
+			color: white;
+		}
+
+		.item__price {
+			text-align: center;
+			font-family: $main_font;
+			font-size: large;
+			font-weight: 900;
+			color: #ffd900a1;
+		}
+	}
+
+	&__image {
+		text-align: center;
+
+		& img {
+			width: 700px;
+			height: 500px;
+			object-fit: cover;
+			border-radius: 20px 20px 0px 0px;
+			overflow: hidden;
+		}
+	}
+}
+
+@media (max-width: 844px) {
+	.image-slider__image img {
+		width: 500px;
+		height: 300px;
+	}
+	.image-slider .event__info {
+		width: 500px;
+		height: 100px;
+	}
+}
+
+@media (max-width: 767px) {
+	.image-slider__image img {
+		width: 300px;
+		height: 100px;
+	}
+	.image-slider .event__info {
+		width: 300px;
+		height: 100px;
+	}
+}
+@media (max-width: 410px) {
+	.image-slider__image img {
+		width: 150px;
+		height: 100px;
+	}
+	.image-slider .event__info {
+		width: 150px;
+		height: 100px;
+	}
+}
+
+@media (max-width: 322px) {
+	.image-slider__image img {
+		width: 100px;
+		height: 60px;
+	}
+	.image-slider .event__info {
+		width: 500px;
+		height: 100px;
+	}
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+	color: $main_color;
+	font-size: 50px;
+}
+
+/*===============================================
+							Footer
+===============================================*/
+
+.footer {
+	background-color: $main_color;
+	width: 100%;
+	height: 100px;
+
+	&__link {
+		font-family: $main_font;
+		font-size: 20px;
+		color: black;
+		text-align: center;
+	}
+}

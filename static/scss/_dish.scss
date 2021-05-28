@@ -1,0 +1,186 @@
+.dish__body {
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 1vw;
+	overflow: auto;
+
+	@media (max-width: 1051px) {
+		display: block;
+	}
+}
+
+.dish__card {
+	margin: 100px auto;
+	background-color: black;
+	width: 300px;
+	height: 400px;
+	border-radius: 10px;
+	position: relative;
+
+	@media (max-width: 1051px) {
+		width: 450px;
+		height: 500px;
+	}
+
+	@media (max-width: 767px) {
+		width: 300px;
+		height: 400px;
+	}
+
+	@media (max-width: 345px) {
+		width: 250px;
+		height: 450px;
+	}
+
+	.change__link {
+		color: #968214;
+		font-family: $main_font;
+		font-size: 20px;
+		text-decoration: none;
+	}
+
+	.delete__link {
+		padding-left: 20px;
+		color: crimson;
+		font-family: $main_font;
+		font-size: 20px;
+		text-decoration: none;
+
+		@media (max-width: 345px) {
+			padding-left: 0px;
+		}
+	}
+}
+
+.dish__title {
+	font-size: 30px;
+}
+
+.dish__details {
+	position: absolute;
+	bottom: 10px;
+	left: 36%;
+
+	@media (max-width: 1051px) {
+		left: 41%;
+	}
+
+	@media (max-width: 767px) {
+		left: 36%;
+	}
+
+	@media (max-width: 345px) {
+		left: 33%;
+	}
+
+	& > a {
+		color: #968214;
+		font-family: $main_font;
+		font-size: 20px;
+		text-decoration: none;
+	}
+}
+
+.dish__img img {
+	width: 100%;
+	height: 250px;
+	object-fit: cover;
+	border-radius: 10px 10px 0px 0px;
+
+	@media (max-width: 1051px) {
+		height: 350px;
+	}
+
+	@media (max-width: 767px) {
+		height: 250px;
+	}
+}
+
+.dish__price {
+	padding: 20px 0px 0px 0px;
+}
+
+.dish__info {
+	width: 100%;
+	height: 200px;
+	text-align: center;
+	margin: 0;
+	padding: 13px 50px;
+	color: #ffd900;
+	background-color: #000;
+	font-family: "Lemonada", cursive;
+	font-size: 22px;
+	border: 1px solid;
+	border-color: #ffd900;
+	border-radius: 0px 0px 10px 10px;
+
+	@media (max-width: 345px) {
+		height: 200px;
+	}
+}
+
+.card__change {
+	margin-top: 20px;
+}
+
+.card__price {
+	padding: 5px 0px 5px 0px;
+}
+
+.card__description {
+	color: white;
+	font-family: $main_font;
+	font-size: 15px;
+	font-weight: 400;
+	margin: 20px 0;
+}
+
+.create__dish {
+	text-align: center;
+	margin: 20px 0px 50px 0px;
+	position: relative;
+	& > a {
+		text-decoration: none;
+		color: $main_color;
+		font-family: $main_font;
+		font-size: 20px;
+	}
+
+	.linkl {
+		position: absolute;
+		margin: -15px 0px 0px -15px;
+		background: rgba(143,121,16,1);
+    width: 5px;
+    height: 50px;
+    display: inline-block;
+	}
+
+	.linkr {
+		position: absolute;
+    background: rgba(255,217,0,1);
+    margin: -20px 0px 0px -5px;
+    width: 5px;
+    height: 55px;
+    display: inline-block;
+	}
+
+	& > a::before {
+		content: '';
+    position: absolute;
+    margin: -20px 0px 0px -15px;
+    width: 215px;
+    height: 5px;
+    background: linear-gradient(90deg, rgba(143,121,16,1) 0%, rgba(255,217,0,1) 100%);
+    display: inline-block;
+	}
+
+	& > a::after {
+		content: '';
+    margin: 0px 0px -20px -198px;
+    width: 215px;
+    height: 5px;
+    background: linear-gradient(90deg, rgba(143,121,16,1) 0%, rgba(255,217,0,1) 100%);
+    display: inline-block;
+	}
+}

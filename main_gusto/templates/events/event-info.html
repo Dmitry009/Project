@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="wrapper">
+	<div class="container">
+		<div class="event__info">
+			<div class="event__card">
+				<img src="{{ event.photo.url }}" alt="" />
+				<h1 class="card__title">{{ event.title }}</h1>
+				<div class="card__order">Price: {{ event.price }}</div>
+				<div class="card__eventdate">{{ event.event_date }}</div>
+				<div class="card__eventtime">{{ event.event_time }}</div>
+				<div class="card__description">{{ event.description }}</div>
+				<div class="card__change">
+					<a class="change__link" href="{% url 'event-update' event.id %}"
+						>Change</a
+					>
+					<a class="delete__link" href="{% url 'event-delete' event.id %}"
+						>Delete</a
+					>
+				</div>
+			</div>
+			<div class="link__back">
+				<a href="/events/">Back</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,220 @@
+<<<<<<< Updated upstream
+{% extends 'base.html' %} {% block content %}
+
+<section class="banners" id="banners">
+	{% for item in banners %}
+	<div class="banners__container container">
+		<div class="banners__text">{{ item.title }}</div>
+		{% endfor %}
+		<div class="reservation">
+			<form
+				name="sendMessage"
+				id="contactForm"
+				novalidate
+				action=""
+				method="post"
+			>
+				{% csrf_token %}
+				<h1>Reservation</h1>
+				<div class="reserv">
+					<div class="reserv__name">{{ form.user_name }}</div>
+					<div class="reserv__email">{{ form.user_email }}</div>
+					<div class="reserv__message">{{ form.message }}</div>
+				</div>
+				<button type="submit" class="reserv__btn">Book now</button>
+			</form>
+		</div>
+	</div>
+	{% for item in banners %}
+	<div class="banners__img"><img src="{{ item.photo.url }}" alt /></div>
+	{% endfor %}
+</section>
+
+<section id="menu">
+	<div class="text__container container">
+		Discover <br />
+		Our Menu
+	</div>
+	<div class="categories container">
+		<div class="categories__cards">
+			{% for item in categories %}
+			<a href="/menu/{{ item.pk }}">
+				<div class="card">
+					<img src="{{ item.photo.url }}" alt="" />
+					<h1 class="card__title">{{ item.title }}</h1>
+				</div>
+			</a>
+=======
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section>
+	<h1>Banners</h1>
+	<div class="container">
+			<div class="row">
+					{% for item in banners %}
+							<div class="col-xs-12 col-sm-6">
+									<h2>{{ item.title }}</h2>
+							<img src="{{ item.photo.url }}" alt="">
+							</div>
+					{% endfor %}
+			</div>
+	</div>
+</section>
+
+
+<section>
+	<h1>From Chef</h1>
+	<div class="container">
+		<div class="row">
+			{% for element in events %}
+				<div class="col-xs-12 col-sm-6">
+					<img src="{{ element.photo.url }}" alt="">
+					<h2>{{ element.title }}</h2>
+					<p>{{ element.description }}</p>
+					<div class="timelist">{{ element.event_time }}</div>
+					<div class="datetime">{{ element.event_date }}</div>
+					<div class="price">{{ element.price }}</div>
+				</div>
+>>>>>>> Stashed changes
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+<<<<<<< Updated upstream
+<section id="about-us">
+	<div class="info">
+		<div class="main__container container">
+			<div class="info__block">
+				<div class="info__title">About us</div>
+				<div class="info__text">
+					<p>
+						Today, many people prefer to celebrate family holidays, birthdays,
+						and weddings in the Dubno restaurant and the Smyga banquet hall.
+						<br />
+					</p>
+					<p>
+						And once the catering establishments were not at all like the
+						presentable, fashionable Golden Lion restaurant, created in order to
+						have a good rest, tasty food, and have a good time. <br />
+					</p>
+
+					<p>
+						The history of the restaurant business goes back to ancient times.
+						In ancient Rome, thermopoly is the prototype of the present
+						restaurant Dubno, food and hot wines were served. However, those
+						establishments were more reminiscent of today's express cafes,
+						because there were no seats there.
+						<br />
+					</p>
+
+					<p>
+						In the 7th century in China during the great Song dynasty,
+						specialized restaurants appeared - visitors could treat themselves
+						to only one particular dish. These establishments are already more
+						reminiscent of today's restaurants in Kremenets in terms of services
+						provided. <br />
+					</p>
+
+					<p>
+						But visitors in a roadside tavern or inn in the Middle Ages
+						sometimes had to be content with being served, let's say - a complex
+						lunch, often in terrible unsanitary conditions. It was only in the
+						18th century that restaurants with exquisite menus, luxurious
+						interiors and chic furnishings appeared in France and Spain.
+						Restourabo (restoration from French) - these were the names of these
+						establishments. <br />
+					</p>
+
+					<p>
+						Further, the restaurant business developed at a rapid pace towards
+						creating comfort for customers. The menu expanded, it was possible
+						to order a dish to your taste, separate booths and tables
+						appeared.<br />
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="info__img">
+			<img src="media/images/info/restaurant1.jpg" alt />
+		</div>
+	</div>
+</section>
+
+<section id="from-chef">
+	<div class="container">
+		<h2 class="title">From-Chef</h2>
+		<div class="image-slider swiper-container">
+			<div class="image-slider__wrapper swiper-wrapper">
+				{% for item in special_dish %}
+				<div class="image-slider__slide swiper-slide">
+					<div class="image-slider__image">
+						<img src="{{ item.photo.url }}" alt="" />
+					</div>
+					<div class="dish__information">
+						<div class="item__title">{{ item.title }}</div>
+						<div class="item__description">{{ item.description }}</div>
+						<div class="item__price">{{ item.price }} &#8372</div>
+						<!-- <div class="item__price">{{ item.category }}</div> -->
+						<!-- <div class="item__desription">{{ item.description }}</div> -->
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+=======
+
+<section>
+  <h1>Menu</h1>
+  <div class="container">
+    <div class="row">
+      {% for item in categories %}
+        <div class="col-xs-12 col-sm-6">
+					<h2>{{ item.title }}</h2>
+          {% for dish in item.dishes %}
+						<div>
+							<div><h3>{{ dish.title }}</h3></div>
+                <div><p>{{ dish.description }}</p></div>
+                <div><p>{{ dish.price }} &#8372</p></div>
+								<div><img src="{{ dish.photo.url }}" alt></div>
+							</div>
+          {% endfor %}
+					</div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<section>
+	<h1>Send message</h1>
+	<div class="container">
+		<div class="row">
+			<form class="form"
+				name="sendMessage"
+				id="contactForm"
+				novalidate
+				action=""
+				method="post"
+			>
+				{% csrf_token %}
+				<div class="reserv">
+					<div class="reserv__name">{{ form.user_name }}</div>
+					<div class="reserv__email">{{ form.user_email }}</div>
+					<div class="reserv__message">{{ form.message }}</div>
+				</div>
+				<button type="submit" class="reserv__btn">Book now</button>
+			</form>
+>>>>>>> Stashed changes
+		</div>
+	</div>
+</section>
+
+<<<<<<< Updated upstream
+{% endblock %}
+=======
+{% endblock %}
+>>>>>>> Stashed changes

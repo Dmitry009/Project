@@ -1,0 +1,277 @@
+$body_bg: black;
+$main_color: #ffd900;
+$center_width: 1600px;
+$main_font: "Lemonada", cursive;
+
+
+.category {
+	margin: 150px 0px 150px 0px;
+	width: 100%;
+	height: calc(100% - 120px);
+	display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
+  row-gap: 1em;
+	justify-items: center;
+	overflow: auto;
+
+	&__card {
+		width: 350px;
+		height: 350px;
+		border-radius: 15px;
+		border: 2px solid $main_color;
+		overflow: hidden;
+
+		//& > label {
+		//	color: white;
+		//}
+
+		& > img {
+			width: 100%;
+			height: 250px;
+			object-fit: cover;
+		}
+		
+		.card__title {
+			color: $main_color;
+			height: 20px;
+			font-family: $main_font;
+			text-align: center;
+			padding-top: 10px;
+		}
+
+		.card__order {
+			padding-top: 10px;
+			color: white;
+			font-family: $main_font;
+			font-size: 15px;
+			text-align: center;
+		}
+
+		.card__change {
+			padding-top: 10px;
+			text-align: center;
+		}
+
+		.change__link {
+			color: #968214;
+			font-family: $main_font;
+			font-size: 20px;
+			text-decoration: none;
+		}
+
+		.delete__link {
+			padding-left: 20px;
+			color: crimson;
+			font-family: $main_font;
+			font-size: 20px;
+			text-decoration: none;
+		}
+	}
+}
+
+.category__info {
+	margin: 150px 0px 150px 0px;	
+	width: 100%;
+	height: calc(100% - 120px);
+
+	.category__card {
+		margin: auto;
+	}
+}
+
+.create__category {
+	text-align: center;
+	margin: 20px 0px 50px 0px;
+	& > a {
+		text-decoration: none;
+		color: $main_color;
+		font-family: $main_font;
+		font-size: 20px;
+	}
+
+	.link__left {
+		position: absolute;
+		margin: -15px 0px 0px -15px;
+		background: rgba(143,121,16,1);
+    width: 5px;
+    height: 50px;
+    display: inline-block;
+	}
+
+	.link__right {
+		position: absolute;
+    background: rgba(255,217,0,1);
+    margin: -20px 0px 0px -5px;
+    width: 5px;
+    height: 55px;
+    display: inline-block;
+	}
+
+	& > a::before {
+		content: '';
+    position: absolute;
+    margin: -20px 0px 0px -15px;
+    width: 265px;
+    height: 5px;
+    background: linear-gradient(90deg, rgba(143,121,16,1) 0%, rgba(255,217,0,1) 100%);
+    display: inline-block;
+	}
+
+	& > a::after {
+		content: '';
+    margin: 0px 0px -20px -248px;
+    width: 265px;
+    height: 5px;
+    background: linear-gradient(90deg, rgba(143,121,16,1) 0%, rgba(255,217,0,1) 100%);
+    display: inline-block;
+	}
+}
+
+.wrapper {
+	height: calc(100% - 40px);
+	width: 100%;
+	overflow: auto;
+}
+
+.category__form {
+	// margin: 120px 0px 50px 0px;
+
+	.form {
+		width: 255px;
+		height: 500px;
+		margin: auto;
+		&__title,
+		&__order,
+		&__visible,
+		&__special,
+		&__photo,
+		&__price,
+		&__description {
+			color: $main_color;
+			font-family: $main_font;
+			font-size: 20px;
+			font-weight: 700;
+			margin: 20px 0px 20px 0px;
+			padding: 0px 0px 0px 20px;
+		}
+
+		&__visible,
+		&__special {
+			display: inline-block;
+			padding-left: 0px;
+		}
+
+		&__visible {
+			margin-right: 30px;
+		}
+
+		&__special {
+			margin-right: 24px;
+		}
+
+		&__title,
+		&__order,
+		&__price,
+		&__description {
+			text-align: center;
+		}
+
+		&__photo {
+			padding-left: 0px;
+			// text-align: center;
+		}
+
+		&__btn {
+			margin: auto;
+			display: block;
+			background-color: black;
+			border: 3px solid #ffd900;
+			padding: 10px 20px;
+			color: #ffd900;
+			cursor: pointer;
+			font-size: larger;
+			font-family: $main_font;
+		}
+
+		&__error {
+			color: white;
+			font-size: 30px;
+			text-align: center;
+			display: inline-block;
+			margin: 20px 0px 0px 0px;
+			font-family: $main_font;
+		}
+
+		#id_title,
+		#id_price {
+			width: 250px;
+			height: 20px;
+		}
+
+		#id_category_order {
+			width: 250px;
+			height: 20px;
+			display: block;
+		}
+
+		#id_is_visible {
+			margin-right: 20px;
+		}
+
+		#id_photo {
+			padding-bottom: 20px;
+			// display: block;
+			// margin: auto;
+			// width: 86px;
+		}
+
+		#id_category {
+			margin: 0px 0px 20px 60px;
+			width: 150px;
+		}
+
+		#id_description {
+			width: 250px;
+			height: 150px;
+		}
+
+		& > a {
+			color: white;
+			font-family: $main_font;
+			font-size: 15px;
+		}
+
+		&__h1 {
+			font-size: 25px;
+			font-weight: bold;
+			text-align: center;
+			font-family: $main_font;
+			color: $main_color;
+			margin-top: 50px;
+			margin-bottom: 50px;
+		}
+
+		&__bdel {
+			color: crimson;
+			font-size: 50px;
+			font-weight: 700;
+			font-family: $main_font;
+			margin: auto;
+			display: block;
+			background-color: black;
+		}
+	}
+}
+
+.link__back {
+	text-align: center;
+
+	& > a {
+		text-decoration: none;
+		color: white;
+		font-family: $main_font;
+		font-weight: 700;
+		font-size: 24px;
+	}
+}

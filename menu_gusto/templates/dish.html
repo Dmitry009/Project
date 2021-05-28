@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="wrapper">
+	<div class="dish__body container">
+		{% for dish in category %}
+		<div class="dish__card">
+			<div class="dish__img">
+				<img src="{{ dish.photo.url }}" alt>
+			</div>
+			<div class="dish__info">
+				<div class="dish__title">
+					<h5>{{ dish.title }}</h5>
+				</div>
+				<div class="dish__price">
+					<p>{{ dish.price }}&#8372</p>
+				</div>
+				<div class="dish__details"><a href="{% url 'dish-details' dish.pk %}">Details</a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	<div class="create__dish">
+		<span class="linkl"></span>
+		<a href="dishes/create-new-dish/">Create new Dish</a>
+		<span class="linkr"></span>
+	</div>
+</div>
+
+
+
+
+{% endblock %}
